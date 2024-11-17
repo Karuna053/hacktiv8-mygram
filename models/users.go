@@ -8,10 +8,10 @@ import (
 
 type User struct { // Master model. Will automigrate.
 	ID          uint          `gorm:"primarykey"`
-	Username    string        `json:"username" gorm:"uniqueIndex"`
-	Email       string        `json:"email" gorm:"uniqueIndex"`
-	Password    string        `json:"password"`
-	Age         int           `json:"age"`
+	Username    string        `json:"Username" gorm:"uniqueIndex"`
+	Email       string        `json:"Email" gorm:"uniqueIndex"`
+	Password    string        `json:"Password"`
+	Age         int           `json:"Age"`
 	Photo       []Photo       `gorm:"foreignKey:user_id"`
 	SocialMedia []SocialMedia `gorm:"foreignKey:user_id"`
 	Comment     []Comment     `gorm:"foreignKey:user_id"`
