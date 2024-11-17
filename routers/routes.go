@@ -22,8 +22,8 @@ func StartRouter() *gin.Engine {
 	photoRouter := router.Group("/api/photo")
 	{
 		photoRouter.Use(middlewares.Authentication())
-		// photoRouter.GET("/create", controllers.GetOnePhoto)
-		// photoRouter.GET("/create", controllers.GetAllPhotos)
+		photoRouter.GET("/get-one", controllers.GetOnePhoto)
+		photoRouter.GET("/get-all", controllers.GetAllPhotos)
 		photoRouter.POST("/create", controllers.CreatePhoto)
 		photoRouter.PUT("/update", controllers.UpdatePhoto)
 		photoRouter.DELETE("/delete", controllers.DeletePhoto)

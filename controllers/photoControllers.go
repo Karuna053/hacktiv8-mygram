@@ -5,6 +5,7 @@ import (
 	"mygram/database"
 	"mygram/models"
 	"net/http"
+	"strconv"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -237,5 +238,70 @@ func DeletePhoto(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"status":  "success",
 		"message": "Photo has been deleted.",
+	})
+}
+
+func GetAllPhotos(c *gin.Context) {
+	// Declare variables.
+	var db = database.GetDB()
+	var photos []models.Photo
+
+	// Get userdata from JWT.
+	userData := c.MustGet("userData").(jwt.MapClaims)
+	userID := uint(userData["id"].(float64))
+
+	// Retrieve all photos belonging to user.
+	err := db.Where("user_id = ?", userID).Find(&photos).Error
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"status": "fail",
+			"error":  err.Error(),
+		})
+		return
+	}
+
+	// Return photos.
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   photos,
+	})
+}
+
+func GetOnePhoto(c *gin.Context) {
+	// Declare variables.
+	var db = database.GetDB()
+	var photo models.Photo
+	var photoID uint = 0
+
+	// Get userdata from JWT.
+	userData := c.MustGet("userData").(jwt.MapClaims)
+	userID := uint(userData["id"].(float64))
+
+	// Get photoID from the URL.
+	photoIDStr := c.Query("photo_id")
+	photoID64, err := strconv.ParseUint(photoIDStr, 10, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  "fail",
+			"message": "Please make sure to add '?photo_id=1' to the URL, this is a GET API.",
+		})
+		return
+	}
+	photoID = uint(photoID64)
+
+	// Retrieve the specific photo belonging to user.
+	err = db.Where("id = ? AND user_id = ?", uint(photoID), userID).First(&photo).Error
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"status": "fail",
+			"error":  "Photo is either not found, or does not belong to user.",
+		})
+		return
+	}
+
+	// Return photos.
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   photo,
 	})
 }
