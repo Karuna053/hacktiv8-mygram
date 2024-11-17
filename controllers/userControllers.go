@@ -16,9 +16,9 @@ var (
 )
 
 func UserRegister(c *gin.Context) {
+	// Declare variables.
 	db := database.GetDB()
 	contentType := helpers.GetContentType(c)
-	_, _ = db, contentType
 	var User models.User
 
 	// Parse the JSON request and populate the User struct
@@ -28,9 +28,15 @@ func UserRegister(c *gin.Context) {
 		c.ShouldBind(&User)
 	}
 
-	// Validate User struct.
+	// Validate user on login context.
+	var UserRegisterRules models.UserRegisterRules
+	UserRegisterRules.Username = User.Username
+	UserRegisterRules.Email = User.Email
+	UserRegisterRules.Password = User.Password
+	UserRegisterRules.Age = User.Age
+
 	validate := validator.New()
-	err := validate.Struct(User)
+	err := validate.Struct(UserRegisterRules)
 	fmt.Println(err) // Logging error on console... just because.
 
 	if err != nil {
@@ -77,42 +83,62 @@ func UserRegister(c *gin.Context) {
 }
 
 func UserLogin(c *gin.Context) {
+	// Declare variables.
 	db := database.GetDB()
 	contentType := helpers.GetContentType(c)
-	_, _ = db, contentType
-	User := models.User{}
-	password := ""
+	var User models.User
 
+	// Parse the JSON request and populate the User struct
 	if contentType == appJSON {
 		c.ShouldBindJSON(&User)
 	} else {
 		c.ShouldBind(&User)
 	}
 
-	password = User.Password
-	err := db.Debug().Where("email = ?", User.Email).Take(&User).Error
+	// Validate on login context.
+	var UserLoginRules models.UserLoginRules
+	UserLoginRules.Username = User.Username
+	UserLoginRules.Email = User.Email
+	UserLoginRules.Password = User.Password
+
+	validate := validator.New()
+	err := validate.Struct(UserLoginRules)
+	fmt.Println(err) // Logging error on console... just because.
 
 	if err != nil {
+		// Extracting validation errors
+		errorDetails := make(map[string]string)
+		for _, validationErr := range err.(validator.ValidationErrors) {
+			errorDetails[validationErr.Field()] = fmt.Sprintf("Validation failed on '%s' tag", validationErr.Tag())
+		}
+
+		// Return error.
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  "fail",
+			"message": errorDetails,
+		})
+		return
+	}
+
+	// Perform login attempt.
+	var password string = User.Password
+
+	err = db.Debug().Where("email = ?", User.Email).Take(&User).Error           // Check if email matches.
+	comparePass := helpers.ComparePass([]byte(User.Password), []byte(password)) // Check if password matches.
+	if err != nil || !comparePass {
 		c.JSON(http.StatusUnauthorized, gin.H{
-			"error":   "Unauthorized",
+			"status":  "fail",
 			"message": "Invalid email/password",
 		})
 		return
 	}
 
-	comparePass := helpers.ComparePass([]byte(User.Password), []byte(password))
-
-	if !comparePass {
-		c.JSON(http.StatusUnauthorized, gin.H{
-			"error":   "Unauthorized",
-			"message": "invalid email/password",
-		})
-		return
-	}
-
+	// Generate login token.
 	token := helpers.GenerateToken(User.ID, User.Email)
 
+	// Return success message.
 	c.JSON(http.StatusOK, gin.H{
-		"token": token,
+		"status": "success",
+		"token":  token,
 	})
 }

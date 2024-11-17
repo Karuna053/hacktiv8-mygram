@@ -23,7 +23,7 @@ func StartRouter() *gin.Engine {
 	userRouter := router.Group("/api/user")
 	{
 		userRouter.POST("/register", controllers.UserRegister)
-		// userRouter.POST("/login", controllers.UserLogin)
+		userRouter.POST("/login", controllers.UserLogin)
 	}
 
 	return router
