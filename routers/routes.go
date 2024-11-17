@@ -25,8 +25,8 @@ func StartRouter() *gin.Engine {
 		// photoRouter.GET("/create", controllers.GetOnePhoto)
 		// photoRouter.GET("/create", controllers.GetAllPhotos)
 		photoRouter.POST("/create", controllers.CreatePhoto)
-		// photoRouter.PUT("/create", controllers.UpdatePhoto)
-		// photoRouter.DELETE("/create", controllers.DeletePhoto)
+		photoRouter.PUT("/update", controllers.UpdatePhoto)
+		photoRouter.DELETE("/delete", controllers.DeletePhoto)
 	}
 
 	return router
