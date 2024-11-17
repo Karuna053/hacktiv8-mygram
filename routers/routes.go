@@ -42,8 +42,8 @@ func StartRouter() *gin.Engine {
 	commentRouter := router.Group("/api/comment")
 	{
 		commentRouter.Use(middlewares.Authentication())
-		// commentRouter.GET("/get-one", controllers.GetOneComment)
-		// commentRouter.GET("/get-all", controllers.GetAllComments)
+		commentRouter.GET("/get-one", controllers.GetOneComment)
+		commentRouter.GET("/get-all", controllers.GetAllComments)
 		commentRouter.POST("/create", controllers.CreateComment)
 		commentRouter.PUT("/update", controllers.UpdateComment)
 		commentRouter.DELETE("/delete", controllers.DeleteComment)

@@ -5,6 +5,7 @@ import (
 	"mygram/database"
 	"mygram/models"
 	"net/http"
+	"strconv"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -181,7 +182,7 @@ func DeleteComment(c *gin.Context) {
 		return
 	}
 
-	// Validate request on update photo context.
+	// Validate request on update comment context.
 	var DeleteCommentRules models.DeleteCommentRules
 	DeleteCommentRules.ID = comment.ID
 
@@ -242,5 +243,70 @@ func DeleteComment(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"status":  "success",
 		"message": "Comment has been deleted.",
+	})
+}
+
+func GetAllComments(c *gin.Context) {
+	// Declare variables.
+	var db = database.GetDB()
+	var comments []models.Comment
+
+	// Get userdata from JWT.
+	userData := c.MustGet("userData").(jwt.MapClaims)
+	userID := uint(userData["id"].(float64))
+
+	// Retrieve all comments belonging to user.
+	err := db.Where("user_id = ?", userID).Find(&comments).Error
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"status": "fail",
+			"error":  err.Error(),
+		})
+		return
+	}
+
+	// Return comments.
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   comments,
+	})
+}
+
+func GetOneComment(c *gin.Context) {
+	// Declare variables.
+	var db = database.GetDB()
+	var comment models.Comment
+	var commentID uint = 0
+
+	// Get userdata from JWT.
+	userData := c.MustGet("userData").(jwt.MapClaims)
+	userID := uint(userData["id"].(float64))
+
+	// Get commentID from the URL.
+	commentIDStr := c.Query("comment_id")
+	commentID64, err := strconv.ParseUint(commentIDStr, 10, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  "fail",
+			"message": "Please make sure to add '?comment_id=1' to the URL, this is a GET API.",
+		})
+		return
+	}
+	commentID = uint(commentID64)
+
+	// Retrieve the specific comment belonging to user.
+	err = db.Where("id = ? AND user_id = ?", uint(commentID), userID).First(&comment).Error
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"status": "fail",
+			"error":  "Comment is either not found, or does not belong to user.",
+		})
+		return
+	}
+
+	// Return comments.
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   comment,
 	})
 }
