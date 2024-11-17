@@ -2,6 +2,7 @@ package routers
 
 import (
 	"mygram/controllers"
+	"mygram/middlewares"
 
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -12,18 +13,20 @@ func StartRouter() *gin.Engine {
 	router := gin.Default()
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	// apiRouter := router.Group("/api")
-	// {
-	// 	apiRouter.POST("/create", controllers.CreateOrder)
-	// 	apiRouter.GET("/get-all-data", controllers.GetAllData)
-	// 	apiRouter.PUT("/update", controllers.UpdateDataOrderAndItem)
-	// 	apiRouter.DELETE("/delete", controllers.DeleteDataOrderAndItem)
-	// }
-
 	userRouter := router.Group("/api/user")
 	{
 		userRouter.POST("/register", controllers.UserRegister)
 		userRouter.POST("/login", controllers.UserLogin)
+	}
+
+	photoRouter := router.Group("/api/photo")
+	{
+		photoRouter.Use(middlewares.Authentication())
+		// photoRouter.GET("/create", controllers.GetOnePhoto)
+		// photoRouter.GET("/create", controllers.GetAllPhotos)
+		photoRouter.POST("/create", controllers.CreatePhoto)
+		// photoRouter.PUT("/create", controllers.UpdatePhoto)
+		// photoRouter.DELETE("/create", controllers.DeletePhoto)
 	}
 
 	return router
