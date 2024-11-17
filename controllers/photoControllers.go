@@ -1,13 +1,81 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"mygram/database"
+	"mygram/models"
+	"net/http"
 
-// var (
-// 	appJSON = "application/json"
-// )
+	"github.com/dgrijalva/jwt-go"
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+)
 
 func CreatePhoto(c *gin.Context) {
+	var db = database.GetDB()
+	var photo models.Photo
 
+	// Parse the JSON request and populate the Photo struct
+	err := c.ShouldBindJSON(&photo)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status": "fail",
+			"error":  err.Error(),
+		})
+		return
+	}
+
+	// Validate request on create photo context.
+	var CreatePhotoRules models.CreatePhotoRules
+	CreatePhotoRules.Title = photo.Title
+	CreatePhotoRules.Caption = photo.Caption
+	CreatePhotoRules.PhotoURL = photo.PhotoURL
+
+	validate := validator.New()
+	err = validate.Struct(CreatePhotoRules)
+	fmt.Println(err) // Logging error on console... just because.
+
+	if err != nil {
+		// Extracting validation errors
+		errorDetails := make(map[string]string)
+		for _, validationErr := range err.(validator.ValidationErrors) {
+			errorDetails[validationErr.Field()] = fmt.Sprintf("Validation failed on '%s' tag", validationErr.Tag())
+		}
+
+		// Return error.
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  "fail",
+			"message": errorDetails,
+		})
+		return
+	}
+
+	// Get userdata from JWT.
+	userData := c.MustGet("userData").(jwt.MapClaims)
+	userID := uint(userData["id"].(float64))
+
+	// Create photo.
+	photoInput := models.Photo{
+		Title:    photo.Title,
+		Caption:  photo.Caption,
+		PhotoURL: photo.PhotoURL,
+		UserID:   userID,
+	}
+
+	err = db.Create(&photoInput).Error
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"status": "fail",
+			"error":  err,
+		})
+		return
+	}
+
+	// Return success response.
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   photoInput,
+	})
 }
 
 // func UserRegister(c *gin.Context) {
