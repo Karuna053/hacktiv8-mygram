@@ -19,13 +19,13 @@ type Comment struct {
 
 type CreateCommentRules struct { // Used in create context.
 	PhotoID uint   `validate:"required"`
-	Message string `validate:"required,max:6000"`
+	Message string `validate:"required,max=2000"`
 }
 
 type UpdateCommentRules struct { // Used in update context.
 	ID      uint   `validate:"required"`
 	PhotoID uint   `validate:"required"`
-	Message string `validate:"required,max:6000"`
+	Message string `validate:"required,max=2000"`
 }
 
 type DeleteCommentRules struct { // Used in delete context.
