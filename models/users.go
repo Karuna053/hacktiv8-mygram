@@ -23,7 +23,7 @@ type UserRegisterRules struct { // Used in register context.
 	Username string `validate:"required"`
 	Email    string `validate:"required,email"`
 	Password string `validate:"required,min=6"`
-	Age      int    `json:"age" validate:"required,gt=8"`
+	Age      int    `validate:"required,gt=8"`
 }
 
 type UserLoginRules struct { // Used in login context.
