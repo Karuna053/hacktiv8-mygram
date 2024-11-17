@@ -24,7 +24,6 @@ type CreateCommentRules struct { // Used in create context.
 
 type UpdateCommentRules struct { // Used in update context.
 	ID      uint   `validate:"required"`
-	PhotoID uint   `validate:"required"`
 	Message string `validate:"required,max=2000"`
 }
 
