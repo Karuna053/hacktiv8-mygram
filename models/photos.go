@@ -30,6 +30,6 @@ type UpdatePhotoRules struct { // Used in update context.
 	PhotoURL string `validate:"required,max=2000"`
 }
 
-type DeletePhotoRules struct { // used in delete context.
+type DeletePhotoRules struct { // Used in delete context.
 	ID uint `validate:"required"`
 }

@@ -29,5 +29,25 @@ func StartRouter() *gin.Engine {
 		photoRouter.DELETE("/delete", controllers.DeletePhoto)
 	}
 
+	socialMediaRouter := router.Group("/api/social-media")
+	{
+		socialMediaRouter.Use(middlewares.Authentication())
+		socialMediaRouter.GET("/get-one", controllers.GetOneSocialMedia)
+		socialMediaRouter.GET("/get-all", controllers.GetAllSocialMedias)
+		socialMediaRouter.POST("/create", controllers.CreateSocialMedia)
+		socialMediaRouter.PUT("/update", controllers.UpdateSocialMedia)
+		socialMediaRouter.DELETE("/delete", controllers.DeleteSocialMedia)
+	}
+
+	// commentRouter := router.Group("/api/comment")
+	// {
+	// 	commentRouter.Use(middlewares.Authentication())
+	// 	commentRouter.GET("/get-one", controllers.GetOneComment)
+	// 	commentRouter.GET("/get-all", controllers.GetAllComments)
+	// 	commentRouter.POST("/create", controllers.CreateComment)
+	// 	commentRouter.PUT("/update", controllers.UpdateComment)
+	// 	commentRouter.DELETE("/delete", controllers.DeleteComment)
+	// }
+
 	return router
 }
