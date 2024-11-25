@@ -1,1 +1,3 @@
 Hello! This repository demonstrates my knowledge of the fundamentals of Go programming, including but not limited to: the development of Web Services and Web Servers, utilization of PostgreSQL database, usages of HTTP request and REST API, implementation of JWTs in middleware, as well as the development of Unit Testing.
+
+Want to try it out? Just import the JSON request collection provided! Open the postman folder in the project and import the JSON file inside to your Postman!
