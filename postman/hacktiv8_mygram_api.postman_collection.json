@@ -1,0 +1,1638 @@
+{
+	"info": {
+		"_postman_id": "e7373d22-cff1-4f13-8e6b-897b771d2c3c",
+		"name": "Hacktivate MyGram API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3064393"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"Eilang5\",\r\n    \"Email\": \"eilang5@gmail.com\",\r\n    \"Age\": 20,\r\n    \"Password\": \"Threefold Tyre\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"Eilang3\",\r\n    \"Email\": \"eilang3@gmail.com\",\r\n    \"Age\": 20,\r\n    \"Password\": \"Threefold Tyre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 17:03:44 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "170"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"age\": 20,\n            \"email\": \"eilang3@gmail.com\",\n            \"id\": 9,\n            \"password\": \"$2a$08$ozpQXma2TazXiYYuRwpbCeWE2CcMsIBvn53g6P/7I8eE/hmKfJdYW\",\n            \"username\": \"Eilang3\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"Eilang2\",\r\n    \"Email\": \"eilang2@gmail.com\",\r\n    \"Password\": \"Threefold Tyre\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"Eilang3\",\r\n    \"Email\": \"eilang3@gmail.com\",\r\n    \"Password\": \"Threefold Tyre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 17:30:56 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "141"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Photo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\r\n    \"Caption\": \"Let's goooooooooooooooooooo\",\r\n    \"Title\": \"Tomas & friends\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/photo/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photo",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\r\n    \"Caption\": \"Let's goooooooooooooooooooo\",\r\n    \"Title\": \"Tomas & friends\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 18:18:57 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "253"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 3,\n        \"Title\": \"Tomas & friends\",\n        \"Caption\": \"Let's goooooooooooooooooooo\",\n        \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n        \"UserID\": 9,\n        \"CreatedAt\": \"2024-11-18T01:18:57.5968982+07:00\",\n        \"UpdatedAt\": \"2024-11-18T01:18:57.5968982+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Photo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 2,\r\n    \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\r\n    \"Caption\": \"Let's fucking goooooooooooooooooooo\",\r\n    \"Title\": \"Tomas & friends\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/photo/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photo",
+						"update"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1,\r\n    \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\r\n    \"Caption\": \"Let's fucking goooooooooooooooooooo\",\r\n    \"Title\": \"Tomas & friends\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 18:54:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "260"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"Title\": \"Tomas & friends\",\n        \"Caption\": \"Let's fucking goooooooooooooooooooo\",\n        \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n        \"UserID\": 9,\n        \"CreatedAt\": \"2024-11-18T01:16:15.627646+07:00\",\n        \"UpdatedAt\": \"2024-11-18T01:54:18.0178664+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				},
+				{
+					"name": "400 Photo Does Not Belong To User",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 2,\r\n    \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\r\n    \"Caption\": \"Let's fucking goooooooooooooooooooo\",\r\n    \"Title\": \"Tomas & friends\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"update"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 18:56:49 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"This photo does not belong to current user.\",\n    \"status\": \"fail\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Photo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/photo/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photo",
+						"delete"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Photo Deleted",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"delete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 18:56:24 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Photo has been deleted.\",\n    \"status\": \"success\"\n}"
+				},
+				{
+					"name": "400 Photo Does Not Belong To User",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"delete"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 18:55:48 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"This photo does not belong to current user.\",\n    \"status\": \"fail\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Photos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/photo/get-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photo",
+						"get-all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/photo/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"get-all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:05:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "931"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"ID\": 3,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:18:57.596898+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:18:57.596898+07:00\"\n        },\n        {\n            \"ID\": 4,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:34:20.39373+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:34:20.39373+07:00\"\n        },\n        {\n            \"ID\": 5,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:34:23.674406+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:34:23.674406+07:00\"\n        },\n        {\n            \"ID\": 2,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's fucking goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:18:51.380236+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:57:06.444102+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get One Photo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/photo/get-one?photo_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photo",
+						"get-one"
+					],
+					"query": [
+						{
+							"key": "photo_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 Bad URL",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/get-one",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"get-one"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:17:38 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "98"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Please make sure to add '?photo_id=1' to the URL, this is a GET API.\",\n    \"status\": \"fail\"\n}"
+				},
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/photo/get-one?photo_id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"get-one"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:22:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "259"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 2,\n        \"Title\": \"Tomas & friends\",\n        \"Caption\": \"Let's fucking goooooooooooooooooooo\",\n        \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n        \"UserID\": 9,\n        \"CreatedAt\": \"2024-11-18T01:18:51.380236+07:00\",\n        \"UpdatedAt\": \"2024-11-18T01:57:06.444102+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Social Media",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"Instagram3\",\r\n    \"SocialMediaURL\": \"Let's go.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/social-media/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"social-media",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Instagram\",\r\n    \"SocialMediaURL\": \"Let's go.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/social-media/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"social-media",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:43:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"Name\": \"Instagram\",\n        \"SocialMediaURL\": \"Let's go.\",\n        \"UserID\": 9,\n        \"CreatedAt\": \"2024-11-18T02:43:01.3754337+07:00\",\n        \"UpdatedAt\": \"2024-11-18T02:43:01.3754337+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Social Media",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 1,\r\n    \"Name\": \"Instagram\",\r\n    \"SocialMediaURL\": \"Let's go2.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/social-media/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"social-media",
+						"update"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1,\r\n    \"Name\": \"Instagram\",\r\n    \"SocialMediaURL\": \"Let's go2.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/social-media/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"social-media",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:43:48 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"Name\": \"Instagram\",\n        \"SocialMediaURL\": \"Let's go2.\",\n        \"UserID\": 9,\n        \"CreatedAt\": \"2024-11-18T02:43:01.375433+07:00\",\n        \"UpdatedAt\": \"2024-11-18T02:43:48.0749212+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Social Media",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/social-media/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"social-media",
+						"delete"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/social-media/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"social-media",
+								"delete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:44:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Social Media has been deleted.\",\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Social Medias",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/social-media/get-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"social-media",
+						"get-all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/photo/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"photo",
+								"get-all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:05:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "931"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"ID\": 3,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:18:57.596898+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:18:57.596898+07:00\"\n        },\n        {\n            \"ID\": 4,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:34:20.39373+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:34:20.39373+07:00\"\n        },\n        {\n            \"ID\": 5,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:34:23.674406+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:34:23.674406+07:00\"\n        },\n        {\n            \"ID\": 2,\n            \"Title\": \"Tomas & friends\",\n            \"Caption\": \"Let's fucking goooooooooooooooooooo\",\n            \"PhotoURL\": \"2019-11-09T21:21:46+00:00\",\n            \"UserID\": 9,\n            \"CreatedAt\": \"2024-11-18T01:18:51.380236+07:00\",\n            \"UpdatedAt\": \"2024-11-18T01:57:06.444102+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get One Social Media",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/social-media/get-one?social_media_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"social-media",
+						"get-one"
+					],
+					"query": [
+						{
+							"key": "social_media_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/social-media/get-one?social_media_id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"social-media",
+								"get-one"
+							],
+							"query": [
+								{
+									"key": "social_media_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:46:54 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "188"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 2,\n        \"Name\": \"Instagram2\",\n        \"SocialMediaURL\": \"Let's go.\",\n        \"UserID\": 9,\n        \"CreatedAt\": \"2024-11-18T02:45:58.32546+07:00\",\n        \"UpdatedAt\": \"2024-11-18T02:45:58.32546+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Message\": \"What's up brother?\",\r\n    \"PhotoID\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comment/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Message\": \"What's up brother?\",\r\n    \"PhotoID\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comment/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comment",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 19:56:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "186"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"UserID\": 9,\n        \"PhotoID\": 2,\n        \"Message\": \"What's up brother?\",\n        \"CreatedAt\": \"2024-11-18T02:56:12.0533433+07:00\",\n        \"UpdatedAt\": \"2024-11-18T02:56:12.0533433+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 2,\r\n    \"Message\": \"Updated message incoming.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comment/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"update"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 2,\r\n    \"Message\": \"Updated message incoming.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comment/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comment",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 20:06:51 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 2,\n        \"UserID\": 9,\n        \"PhotoID\": 2,\n        \"Message\": \"Updated message incoming.\",\n        \"CreatedAt\": \"2024-11-18T02:56:43.377939+07:00\",\n        \"UpdatedAt\": \"2024-11-18T03:06:51.212969+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comment/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"delete"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comment/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comment",
+								"delete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 20:10:19 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Comment has been deleted.\",\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Comments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/comment/get-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"get-all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/comment/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comment",
+								"get-all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 20:14:50 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "503"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"ID\": 2,\n            \"UserID\": 9,\n            \"PhotoID\": 2,\n            \"Message\": \"Updated message incoming.\",\n            \"CreatedAt\": \"2024-11-18T02:56:43.377939+07:00\",\n            \"UpdatedAt\": \"2024-11-18T03:06:51.212969+07:00\"\n        },\n        {\n            \"ID\": 3,\n            \"UserID\": 9,\n            \"PhotoID\": 2,\n            \"Message\": \"What's up brother?\",\n            \"CreatedAt\": \"2024-11-18T03:09:53.2011+07:00\",\n            \"UpdatedAt\": \"2024-11-18T03:09:53.2011+07:00\"\n        },\n        {\n            \"ID\": 4,\n            \"UserID\": 9,\n            \"PhotoID\": 2,\n            \"Message\": \"What's up brother?\",\n            \"CreatedAt\": \"2024-11-18T03:10:00.318872+07:00\",\n            \"UpdatedAt\": \"2024-11-18T03:10:00.318872+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get One Comment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVpbGFuZzNAZ21haWwuY29tIiwiaWQiOjl9.9uUYfFV83g79kBuEBLTOqAiVBII4FEPjpSxnROdJs8c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comment/get-one?comment_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"get-one"
+					],
+					"query": [
+						{
+							"key": "comment_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comment/get-one?comment_id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comment",
+								"get-one"
+							],
+							"query": [
+								{
+									"key": "comment_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 20:14:56 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 2,\n        \"UserID\": 9,\n        \"PhotoID\": 2,\n        \"Message\": \"Updated message incoming.\",\n        \"CreatedAt\": \"2024-11-18T02:56:43.377939+07:00\",\n        \"UpdatedAt\": \"2024-11-18T03:06:51.212969+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		}
+	]
+}
